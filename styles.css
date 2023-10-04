@@ -27,6 +27,7 @@ header {
 .title {
     font-family: 'Shrikhand', sans-serif;
     font-size: 5rem;
+    font-weight: 400;
     margin-bottom: 6rem;
     color: #FF6B6B;
 }
