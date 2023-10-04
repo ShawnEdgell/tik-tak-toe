@@ -82,9 +82,13 @@ function resetGame() {
     for (let i = 0; i < cells.length; i++) {
         cells[i].innerHTML = '';
         cells[i].classList.remove('winning-cell');
+        const initialSubtextElement = document.querySelector('.initial-subtext');
+        const resultSubtextElement = document.querySelector('.result-subtext');
+    
+        initialSubtextElement.classList.remove('hidden'); // show initial subtext
+        resultSubtextElement.textContent = '';
+        resultSubtextElement.classList.add('hidden'); // hide result subtext
+    
+        updateSubtitle();
     }
-
-    updateSubtitle();
 }
-
-
