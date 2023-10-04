@@ -195,4 +195,8 @@ function resetGame() {
     updateSubtitle();
     document.querySelector('.initial-subtext').classList.remove('hidden');
     document.querySelector('.result-subtext').classList.add('hidden');
+    
+    if (aiEnabled && currentPlayer === 'O') {
+        setTimeout(computerMove, 500);
+    }
 }
