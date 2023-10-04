@@ -7,23 +7,29 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
     <header>
         <h1 class="title">Tic-Tac-Toe</h1>
-        <p class="subtext"><span class="player-name">Player 1</span>, make your move.</p>
+        <p class="initial-subtext subtext"><span class="player-name">Player 1</span>, make your move.</p>
     </header>
-    <main class="gameboard">
-        <div class="squares">
-            <div>X</div>
-            <div>0</div>
-            <div>X</div>
-            <div>0</div>
-            <div>X</div>
-            <div>0</div>
-            <div>X</div>
-            <div>0</div>
-            <div>X</div>
+        <div class="board">
+
+            <div class="container">
+                <div class="cell" onclick="makeMove(0)"></div>
+                <div class="cell" onclick="makeMove(1)"></div>
+                <div class="cell" onclick="makeMove(2)"></div>
+                <div class="cell" onclick="makeMove(3)"></div>
+                <div class="cell" onclick="makeMove(4)"></div>
+                <div class="cell" onclick="makeMove(5)"></div>
+                <div class="cell" onclick="makeMove(6)"></div>
+                <div class="cell" onclick="makeMove(7)"></div>
+                <div class="cell" onclick="makeMove(8)"></div>
         </div>
-    </main>
+
+
+        </div>
+        <button class="reset-btn" onclick="resetGame()">Reset Game</button>
     <script src="app.js" defer></script>
+    </div>
 </body>
 </html>

@@ -7,7 +7,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    border: 1px solid red;
 }
 
 /* global */
@@ -18,56 +17,119 @@ body{
     max-width: 60rem;
     margin: 0 auto;
     height: 100vh;
+    background-color: #FFD28A; /* Warm pastel orange */
 }
 
 /* header */
-header{
+header {
     margin-top: 10%;
     text-align: center;
     margin-bottom: 5rem;
 }
-.title{
+.title {
     font-family: 'Shrikhand', sans-serif;
     font-size: 5rem;
     margin-bottom: 6rem;
+    color: #FF6B6B; /* Vibrant red-pink */
 }
-.subtext{
+.subtext {
     font-family: 'JetBrains', monospace;
     font-size: 2rem;
+    color: black; /* Playful blue */
 }
-.subtext span{
+.subtext span {
     font-weight: 900;
 }
 
 /* main */
-.gameboard{
-    position: relative;
+.board {
+    background-color: white;
+    position: relative; 
     width: 100%;
-    padding-top: 100%;
-    border-radius: 6px;
+    padding-top: 100%; /* 1:1 aspect ratio */
+    overflow: hidden; /* Prevent any spill-over from children */
+    border-radius: 12px; /* Adding a bit of roundedness */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
-.squares{
-    position: absolute;
+
+.container {
+    position: absolute; 
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
-    margin: 1rem;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
-    border-radius: 6px;
-    align-items: center;
-    gap: 10px;
+    gap: 10px; /* Spacing between cells */
 }
 
-.squares div {
-    display: flex;
-    text-align: center;
-    font-size: 80px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+.cell {
+    background-color: #4A90E2; /* Very light pastel orange */
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    /* These styles ensure the cells expand to fill the space of their grid cell */
+    width: 100%;
     height: 100%;
+    display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.cell:hover {
+    background-color: #FFC072; /* Slightly darker pastel orange */
+}
+
+.reset-btn {
+    font-family: 'JetBrains', monospace;
+    font-size: 2rem;
+    font-weight: 900; /* Make the button text bolder */
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #f4f4f4;
+    border: 1px solid #e1e1e1;
+    transition: background-color 0.2s;
+    display: block;
+    margin: 4rem auto 5rem; /* Add spacing at the bottom similar to the subtext */
+    color: #4A90E2; /* Playful blue, similar to the subtext */
+    letter-spacing: 0.1rem; /* Increase the spacing between letters */
+}
+
+.reset-btn:hover {
+    background-color: #e8e8e8;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add a shadow to elevate the button */
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.player-name {
+    font-weight: bold;
+}
+
+.winning-cell {
+    background-color: #FFC072; /* Orange */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
