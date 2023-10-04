@@ -1,17 +1,46 @@
 let board = ['', '', '', '', '', '', '', '', ''];
 let currentPlayer = 'X';
 let gameOver = false;
+let xSVG, oSVG;
 
-function updateInitialSubtext() {
-    const player = currentPlayer === 'X' 
-                   ? '<span class="player-name"><strong>Player 1</strong></span>' 
-                   : '<span class="player-name"><strong>Player 2</strong></span>';
-    document.querySelector('.initial-subtext').innerHTML = `${player}, make your move.`;
+window.onload = function() {
+    setupSVGs();
+    setupModalLogic();
 }
 
-// Define a function to update the result subtext
-function updateResultSubtext(message) {
-    document.querySelector('.result-subtext').textContent = message;
+function setupSVGs() {
+    fetch('/images/cancel.svg')
+        .then(response => response.text())
+        .then(data => xSVG = data)
+        .catch(error => console.error('Error fetching X SVG:', error));
+
+    fetch('/images/check.svg')
+        .then(response => response.text())
+        .then(data => oSVG = data)
+        .catch(error => console.error('Error fetching O SVG:', error));
+}
+
+function setupModalLogic() {
+    const modal = document.getElementById("myModal");
+    const span = document.getElementsByClassName("close")[0];
+    
+    span.onclick = () => modal.style.display = "none";
+    window.onclick = event => {
+        if (event.target == modal) modal.style.display = "none";
+    }
+}
+
+function makeMove(index) {
+    if (board[index] === '' && !gameOver) {
+        const svgToInsert = currentPlayer === 'X' ? xSVG : oSVG;
+        document.getElementsByClassName('cell')[index].innerHTML = svgToInsert;
+        board[index] = currentPlayer;
+        
+        if (!checkWin()) {
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            updateSubtitle();
+        }
+    }
 }
 
 function checkWin() {
@@ -24,115 +53,57 @@ function checkWin() {
     for (let condition of winConditions) {
         if (board[condition[0]] && board[condition[0]] === board[condition[1]] && board[condition[1]] === board[condition[2]]) {
             gameOver = true;
-            // Highlight the winning cells
-            condition.forEach(index => {
-                document.getElementsByClassName('cell')[index].classList.add('winning-cell');
-            });
-
-            const winner = currentPlayer === 'X' ? 'Player 1' : 'Player 2';
-            const message = `${winner} wins!`;
-            showModal(message);
-            updateResultSubtext(message); // Update the result subtext
+            condition.forEach(index => document.getElementsByClassName('cell')[index].classList.add('winning-cell'));
+            
+            const winnerMessage = `${currentPlayer === 'X' ? 'Player 1' : 'Player 2'} wins!`;
+            updateResultSubtext(winnerMessage);
+            showModal(winnerMessage);
             return true;
         }
     }
 
     if (!board.includes('')) {
         gameOver = true;
+        updateResultSubtext('Draw!');
         showModal('Draw!');
-        updateResultSubtext('Draw!'); // Update the result subtext for a draw
         return true;
     }
-
-
     return false;
 }
 
 function updateSubtitle() {
-    if (gameOver) {
-        const winner = currentPlayer === 'X' ? 'Player 1' : 'Player 2';
-        const message = winner ? `${winner} wins!` : 'Draw!';
-        document.querySelector('.result-subtext').textContent = message;
-    } else {
-        const player = currentPlayer === 'X'
-            ? '<span class="player-name"><strong>Player 1</strong></span>'
-            : '<span class="player-name"><strong>Player 2</strong></span>';
-        document.querySelector('.subtext').innerHTML = `${player}, make your move.`;
-    }
+    const player = currentPlayer === 'X' ? 'Player 1' : 'Player 2';
+    const message = `${player}, make your move.`;
+    document.querySelector('.subtext').innerHTML = message;
 }
 
-window.onload = function() {
-    fetch('/images/cancel.svg')
-      .then(response => response.text())
-      .then(data => {
-        xSVG = data;
-      })
-      .catch(error => {
-        console.error('Error fetching X SVG:', error);
-      });
+function updateResultSubtext(message) {
+    const initialSubtextElement = document.querySelector('.initial-subtext');
+    const resultSubtextElement = document.querySelector('.result-subtext');
 
-    fetch('/images/check.svg')
-      .then(response => response.text())
-      .then(data => {
-        oSVG = data;
-      })
-      
-      .catch(error => {
-        console.error('Error fetching O SVG:', error);
-      });
-
-    // Modal logic
-    let modal = document.getElementById("myModal");
-    let span = document.getElementsByClassName("close")[0];
-    span.onclick = function() {
-      modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-    
-}
-
-function makeMove(index) {
-    if (board[index] === '' && !gameOver) {
-        let svgToInsert = currentPlayer === 'X' ? xSVG : oSVG;
-        document.getElementsByClassName('cell')[index].innerHTML = svgToInsert;
-        board[index] = currentPlayer;
-        if (!checkWin()) {
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            updateSubtitle();  // Update subtitle after making a move
-        }
-    }
+    initialSubtextElement.classList.add('hidden'); // hide initial subtext
+    resultSubtextElement.textContent = message;
+    resultSubtextElement.classList.remove('hidden'); // show result subtext
 }
 
 function resetGame() {
     board = ['', '', '', '', '', '', '', '', ''];
     currentPlayer = 'X';
     gameOver = false;
-
-    // Clear the board display and remove the winning-cell class
+    
     const cells = document.getElementsByClassName('cell');
     for (let i = 0; i < cells.length; i++) {
         cells[i].innerHTML = '';
-        cells[i].classList.remove('winning-cell'); // Remove the winning-cell class
+        cells[i].classList.remove('winning-cell');
     }
 
-    updateSubtitle();  // Reset the subtitle message
+    updateSubtitle();
 }
 
 function showModal(message) {
-    const modal = document.getElementById("myModal");
     const modalMessage = document.getElementById("modalMessage");
     modalMessage.textContent = message;
-    modal.style.display = "block";
+    document.getElementById("myModal").style.display = "block";
 }
 
-window.onclick = function(event) {
-    const modal = document.getElementById("myModal");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+

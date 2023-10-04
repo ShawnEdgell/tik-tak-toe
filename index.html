@@ -10,26 +10,25 @@
 
     <header>
         <h1 class="title">Tic-Tac-Toe</h1>
-        <p class="initial-subtext subtext"><span class="player-name">Player 1</span>, make your move.</p>
+        <p class="initial-subtext subtext">Player 1, make your move.</p>
+        <p class="result-subtext subtext hidden"></p>
     </header>
-        <div class="board">
+    <div class="board">
 
-            <div class="container">
-                <div class="cell" onclick="makeMove(0)"></div>
-                <div class="cell" onclick="makeMove(1)"></div>
-                <div class="cell" onclick="makeMove(2)"></div>
-                <div class="cell" onclick="makeMove(3)"></div>
-                <div class="cell" onclick="makeMove(4)"></div>
-                <div class="cell" onclick="makeMove(5)"></div>
-                <div class="cell" onclick="makeMove(6)"></div>
-                <div class="cell" onclick="makeMove(7)"></div>
-                <div class="cell" onclick="makeMove(8)"></div>
+        <div class="container">
+            <div class="cell" onclick="makeMove(0)"><span class="cell-content"></span></div>
+            <div class="cell" onclick="makeMove(1)"><span class="cell-content"></span></div>
+            <div class="cell" onclick="makeMove(2)"><span class="cell-content"></span></div>
+            <div class="cell" onclick="makeMove(3)"><span class="cell-content"></span></div>
+            <div class="cell" onclick="makeMove(4)"><span class="cell-content"></span></div>
+            <div class="cell" onclick="makeMove(5)"><span class="cell-content"></span></div>
+            <div class="cell" onclick="makeMove(6)"><span class="cell-content"></span></div>
+            <div class="cell" onclick="makeMove(7)"><span class="cell-content"></span></div>
+            <div class="cell" onclick="makeMove(8)"><span class="cell-content"></span></div>
         </div>
 
-
-        </div>
-        <button class="reset-btn" onclick="resetGame()">Reset Game</button>
-    <script src="app.js" defer></script>
     </div>
+    <button class="reset-btn" onclick="location.reload()">Reset Game</button>
+    <script src="app.js" defer></script>
 </body>
 </html>
