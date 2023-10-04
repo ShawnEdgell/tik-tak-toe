@@ -8,12 +8,12 @@ window.onload = function() {
 }
 
 function setupSVGs() {
-    fetch('cancel.svg')
+    fetch('check.svg')
         .then(response => response.text())
         .then(data => xSVG = data)
         .catch(error => console.error('Error fetching X SVG:', error));
 
-    fetch('check.svg')
+    fetch('cancel.svg')
         .then(response => response.text())
         .then(data => oSVG = data)
         .catch(error => console.error('Error fetching O SVG:', error));
