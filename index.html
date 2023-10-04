@@ -11,10 +11,15 @@
 </head>
 <body>
 
-
-
-
+    <label class="switch">
+        <input type="checkbox" id="aiToggle" checked>
+        <span class="slider"></span>
+        AI
+      </label>
+   
     <header>
+    
+
         <h1 class="title">Tic-Tac-Toe</h1>
         <p class="initial-subtext subtext">Player 1, make your move.</p>
         <p class="result-subtext subtext hidden"></p>
@@ -34,11 +39,7 @@
         </div>
 
     </div>
-    <button class="reset-btn" onclick="resetGame()">Reset Game</button>
-
-
-
-    
+    <button class="reset-btn" onclick="location.reload()">Reset Game</button>
     <script src="app.js" defer></script>
 </body>
 </html>

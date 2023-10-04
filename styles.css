@@ -115,6 +115,71 @@ header {
     display: none;
 }
 
+/* Container for the toggle switch */
+.switch {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'JetBrains', monospace;
+    font-size: 18px; /* Increase the font size here */
+  }
+  
+  /* Style the actual checkbox input to be hidden */
+  .switch input {
+    display: none;
+  }
+  
+  /* Style the slider (the toggle part) */
+  .switch .slider {
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: .4s;
+    border-radius: 34px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  /* Add the ball inside the slider */
+  .switch .slider:before {
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: -3px;
+    bottom: -3px;
+    background-color: white;
+    position: absolute;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  /* When the checkbox is checked, update the slider's color and move the ball to the right */
+  .switch input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  .switch input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+  
+  /* Add some hover effects */
+  .switch .slider:hover {
+    background-color: #aaa;
+  }
+  
+  .switch input:checked + .slider:hover {
+    background-color: #1c86e0;
+  }
+
 @media only screen and (max-width: 60rem) {
 
     .title      {
@@ -144,3 +209,4 @@ header {
     }
 
 }
+
