@@ -5,7 +5,6 @@ let xSVG, oSVG;
 
 window.onload = function() {
     setupSVGs();
-    setupModalLogic();
 }
 
 function setupSVGs() {
@@ -18,16 +17,6 @@ function setupSVGs() {
         .then(response => response.text())
         .then(data => oSVG = data)
         .catch(error => console.error('Error fetching O SVG:', error));
-}
-
-function setupModalLogic() {
-    const modal = document.getElementById("myModal");
-    const span = document.getElementsByClassName("close")[0];
-    
-    span.onclick = () => modal.style.display = "none";
-    window.onclick = event => {
-        if (event.target == modal) modal.style.display = "none";
-    }
 }
 
 function makeMove(index) {
@@ -57,7 +46,6 @@ function checkWin() {
             
             const winnerMessage = `${currentPlayer === 'X' ? 'Player 1' : 'Player 2'} wins!`;
             updateResultSubtext(winnerMessage);
-            showModal(winnerMessage);
             return true;
         }
     }
@@ -65,7 +53,6 @@ function checkWin() {
     if (!board.includes('')) {
         gameOver = true;
         updateResultSubtext('Draw!');
-        showModal('Draw!');
         return true;
     }
     return false;
@@ -98,12 +85,6 @@ function resetGame() {
     }
 
     updateSubtitle();
-}
-
-function showModal(message) {
-    const modalMessage = document.getElementById("modalMessage");
-    modalMessage.textContent = message;
-    document.getElementById("myModal").style.display = "block";
 }
 
 
