@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Shrikhand&display=swap');
+
+
+/* basic reset */
+*, *::before, *::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: 1px solid red;
+}
+
+/* global */
+html {
+    font-size: 10px;
+}
+body{
+    max-width: 60rem;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+/* header */
+header{
+    margin-top: 10%;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+.title{
+    font-family: 'Shrikhand', sans-serif;
+    font-size: 5rem;
+    margin-bottom: 6rem;
+}
+.subtext{
+    font-family: 'JetBrains', monospace;
+    font-size: 2rem;
+}
+.subtext span{
+    font-weight: 900;
+}
+
+/* main */
+.gameboard{
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    border-radius: 6px;
+}
+.squares{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 1rem;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    border-radius: 6px;
+    align-items: center;
+    gap: 10px;
+}
+
+.squares div {
+    display: flex;
+    text-align: center;
+    font-size: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
