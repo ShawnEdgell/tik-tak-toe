@@ -209,5 +209,9 @@ header {
         margin-bottom: 2rem;
     }
 
+    .cell:hover {
+        background-color: #4A90E2;
+    }
+
 }
 
