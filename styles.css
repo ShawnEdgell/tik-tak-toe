@@ -208,5 +208,9 @@ header {
         margin-bottom: 2rem;
     }
 
+    .reset-btn:hover {
+        background-color: white;
+    }
+
 }
 
