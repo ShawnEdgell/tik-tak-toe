@@ -7,14 +7,14 @@
 
 html {
     font-size: 10px;
-    background-color: #FFD28A;
+    background-color: #f0d958;
 }
 
 body {
     max-width: 60rem;
     margin: 0 auto;
     height: 90vh;
-    background-color: #FFD28A;
+    background-color: #f0d958;
 }
 
 /* Header Styles */
@@ -77,11 +77,11 @@ header {
 }
 
 .cell:hover {
-    background-color: #FFC072;
+    background-color: #f0d958;
 }
 
 .winning-cell {
-    background-color: #FFC072;
+    background-color: #f0d958;
 }
 
 /* Button Styles */
@@ -93,8 +93,8 @@ header {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    background-color: #f4f4f4;
-    border: 1px solid #e1e1e1;
+    background-color: white;
+    border: 1px solid white;
     transition: background-color 0.2s;
     display: block;
     margin: 4rem auto 5rem;
@@ -103,8 +103,7 @@ header {
 }
 
 .reset-btn:hover {
-    background-color: #e8e8e8;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(228, 228, 228);
 }
 
 
