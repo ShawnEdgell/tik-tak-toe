@@ -67,7 +67,7 @@ header {
 }
 
 .cell {
-    background-color: #4A90E2;
+    background-color: #1c86e0;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.2s;
@@ -164,7 +164,7 @@ header {
   
   /* When the checkbox is checked, update the slider's color and move the ball to the right */
   .switch input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #1c86e0;
   }
   
   .switch input:checked + .slider:before {
@@ -210,6 +210,10 @@ header {
 
     .reset-btn:hover {
         background-color: white;
+    }
+
+    .cell:hover {
+        background-color: #1c86e0;
     }
 
 }
